@@ -1,57 +1,77 @@
 # 3. DOCUMENTO DE ESPECIFICAÇÃO DE REQUISITOS DE SOFTWARE
 
-Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
+Este documento descreve os requisitos do sistema **GreenDrop – Sistema de Descarte Correto de Materiais**, incluindo funcionalidades, restrições, usuários e modelagem do sistema, com foco em empresas e organizações que necessitam realizar descartes de forma adequada.
 
-## 3.1 Objetivos deste documento
-Descrever e especificar as necessidades da Coordenação do Curso de Sistemas de Informação da PUC Minas que devem ser atendidas pelo projeto SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento.
+## 3.1 Objetivo do Documento
+O objetivo deste documento é apresentar a concepção e a proposta do sistema **GreenDrop**, detalhando o contexto do problema, público-alvo, objetivos do sistema, principais funcionalidades, requisitos funcionais e não funcionais, usuários, modelagem e diagramas.  
+Este documento serve como referência para o planejamento, desenvolvimento e implantação do sistema, fornecendo uma visão estruturada para todos os envolvidos.
 
-## 3.2 Escopo do produto
+## 3.2 Escopo do Produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento. Ele terá somente um componente (módulo) com os devidos elementos necessários à gestão de cursos.
+O produto será denominado **GreenDrop – Sistema de Descarte Correto de Materiais**.  
+Módulos principais:
+- Cadastro de Empresas  
+- Cadastro de Materiais  
+- Pontos de Coleta  
+- Relatórios e Consultas  
+- Autenticação e Permissões  
+- Atendimento Inteligente (Bot de IA)  
 
 ### 3.2.2 Missão do produto
-Gerenciar informações sobre a oferta de cursos de aperfeiçoamento, gerenciar a composição das turmas, alunos, professores e matrículas. 
+Facilitar o descarte correto de materiais recicláveis e/ou especiais pelas empresas, oferecendo informações sobre pontos de coleta, relatórios de controle e orientações de sustentabilidade.  
+Além disso, fornecer suporte automatizado via bot de IA, que responde dúvidas sobre reciclabilidade e indica o ponto de coleta mais próximo.
 
 ### 3.2.3 Limites do produto
-O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcelas do curso, pagamento a professore e agendamentos. O SCCA não contempla o atendimento a vários cursos de Sistemas de Informação de outras unidades da PUC Minas.
+- Não realiza a coleta física dos materiais.  
+- Não comercializa resíduos, limitando-se à gestão de informações.  
+- Não gerencia transporte ou logística dos materiais.
 
 ### 3.2.4 Benefícios do produto
 
 | # | Benefício | Valor para o Cliente |
-|--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no cadastro de dados |	Essencial |
-|2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|---|------------------------------------|------------------|
+| 1 | Cadastro simplificado de empresas e materiais | Essencial |
+| 2 | Localização fácil de pontos de coleta | Essencial |
+| 3 | Geração de relatórios ambientais | Essencial |
+| 4 | Disseminação de informações sobre sustentabilidade | Recomendável |
+| 5 | Cumprimento da legislação ambiental vigente | Essencial |
+| 6 | Atendimento automatizado via Bot de IA | Diferencial |
 
-## 3.3 Descrição geral do produto
+## 3.3 Descrição Geral do Produto
 
 ### 3.3.1 Requisitos Funcionais
 
-| Código | Requisito Funcional (Funcionalidade) | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| Código | Requisito Funcional | Descrição |
+|--------|-------------------|-----------|
+| RF1 | Gerenciar Empresas | Inclusão, alteração, exclusão e consulta de empresas cadastradas |
+| RF2 | Gerenciar Materiais | Inclusão, alteração, exclusão e consulta de materiais descartáveis |
+| RF3 | Gerenciar Pontos de Coleta | Inclusão, alteração, exclusão e consulta de pontos de coleta |
+| RF4 | Gerar Relatórios | Relatórios de descarte por empresa, material e ponto de coleta |
+| RF5 | Gerenciar Usuários | Inclusão, alteração e exclusão de contas de usuários vinculados às empresas |
+| RF6 | Login e Autenticação | Acesso restrito ao sistema via login e senha |
+| RF7 | Consultar Informações | Empresas podem consultar informações sobre descarte correto e legislação ambiental |
+| RF8 | Atendimento via Bot de IA | Responde dúvidas sobre reciclabilidade e indica pontos de coleta mais próximos |
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
-|--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
-| ... |	... |	... |
+| Código | Requisito Não Funcional |
+|--------|-----------------------|
+| RNF1 | Sistema web, acessível por navegadores modernos (Chrome, Firefox, Edge, Safari) |
+| RNF2 | Responsivo para desktop e dispositivos móveis |
+| RNF3 | Autenticação individual de usuários |
+| RNF4 | Suporta até 500 usuários simultâneos |
+| RNF5 | Disponível 24/7, exceto durante manutenção |
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
-|--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
-| ... |	... |	... |
+|------|-----------|
+| Administrador | Gerencia empresas, pontos de coleta e usuários; acesso total |
+| Empresa | Cadastra materiais e consulta pontos de coleta |
+| Colaborador da Empresa | Registra descartes e gera relatórios |
+| Ponto de Coleta | Recebe materiais das empresas parceiras |
+| Bot de IA | Interpreta dúvidas e indica pontos de coleta corretos |
 
 ## 3.4 Modelagem do Sistema
 
