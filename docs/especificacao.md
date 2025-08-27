@@ -25,7 +25,6 @@ Além disso, fornecer suporte automatizado via bot de IA, que responde dúvidas 
 ### 3.2.3 Limites do produto
 - Não realiza a coleta física dos materiais.  
 - Não comercializa resíduos, limitando-se à gestão de informações.  
-- Exclusivo para empresas, não atendendo pessoas físicas.  
 - Não gerencia transporte ou logística dos materiais.
 
 ### 3.2.4 Benefícios do produto
