@@ -1,20 +1,19 @@
 # 3. DOCUMENTO DE ESPECIFICAÇÃO DE REQUISITOS DE SOFTWARE
 
-Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
-
 ## 3.1 Objetivos deste documento
-Descrever e especificar as necessidades da Coordenação do Curso de Sistemas de Informação da PUC Minas que devem ser atendidas pelo projeto SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento.
+
+Nesta seção, serão documentados os requisitos funcionais e não funcionais do sistema web proposto. Também serão registrados o diagrama de casos de uso e o diagrama de classes, bem como suas respectivas descrições.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento. Ele terá somente um componente (módulo) com os devidos elementos necessários à gestão de cursos.
+O produto será denominado Versora - um sistema web para bibliotecas físicas que facilite a gestão de usuários e as tarefas relacionadas à busca e à reserva de livros. Seus componentes principais são o sistema de busca de livros, o sistema de recomendação de livros e autores, o sistema de reservas e o sistema de avaliações.
 
 ### 3.2.2 Missão do produto
-Gerenciar informações sobre a oferta de cursos de aperfeiçoamento, gerenciar a composição das turmas, alunos, professores e matrículas. 
+Tornar a busca por títulos agradável e intuitiva, criar um ambiente interativo e atraente para leitores de todas as faixas etárias, conferir acessibilidade à biblioteca e incentivar o hábito da leitura. O sistema web implementará as melhores práticas observadas em sites para bibliotecas e irá além, apresentando funcionalidades inéditas no contexto desse tipo de plataforma.
 
 ### 3.2.3 Limites do produto
-O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcelas do curso, pagamento a professore e agendamentos. O SCCA não contempla o atendimento a vários cursos de Sistemas de Informação de outras unidades da PUC Minas.
+O sistema web Versora, no atual ciclo iterativo, funcionará com banco de dados simulado em armazenamento local, para fins de testagem de todas as suas funcionalidades, bem como de implementação de seu layout.
 
 ### 3.2.4 Benefícios do produto
 
@@ -22,111 +21,547 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 |--------------------|------------------------------------|----------------------------------------|
 |1	| Facilidade no cadastro de dados |	Essencial |
 |2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|3 | Fluxo de navegação intuitivo | Essencial | 
+|4	| Agradabilidade estética	| Essencial | 
+|5 | Alto nível de interatividade entre leitores e sistema| Essencial |
+|6 | Aderência às principais boas práticas de acessibilidade| Essencial |
 
 ## 3.3 Descrição geral do produto
 
 ### 3.3.1 Requisitos Funcionais
 
-| Código | Requisito Funcional (Funcionalidade) | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| Código | Requisito Funcional (Funcionalidade) | Descrição                                                                                                                   |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| RF001  | Gerenciar livros                     | Permitir inclusão, consulta, alteração e exclusão de livros                                                                 |
+| RF002  | Gerenciar autores                    | Permitir inclusão, consulta, alteração e exclusão de autores                                                                |
+| RF003  | Gerenciar leitores                   | Permitir inclusão, consulta, alteração e exclusão de leitores                                                               |
+| RF004  | Gerenciar bibliotecários             | Permitir inclusão, consulta, alteração e exclusão de bibliotecários                                                         |
+| RF005  | Gerenciar reserva de livros          | Permitir inclusão, consulta e exclusão de reservas de livros                                                 |
+| RF006  | Realizar login do usuário            | Permitir a entrada de leitores e bibliotecários no sistema                                                                  |
+| RF007  | Realizar logout do usuário           | Permitir a saida de leitores e bibliotecários do sistema                                                                    |
+| RF008  | Buscar livros                        | Permitir busca de títulos específicos, filtro por gênero, autor e ano de publicação                                         |
+| RF009  | Gerenciar lista de favoritos         | Permitir favoritar livros, consultar lista de favoritos e remover livros da lista                                           |
+| RF010  | Gerenciar livros selecionados        | Permitir adicionar livros a uma sacola, consultar lista de selecionados e remover livros da lista                           |
+| RF011  | Gerenciar avaliações                 | Permitir atribuição de nota de 1 a 5 a livros reservados e consultar a média das notas por livro. Consultar o histórico de comentários, incluir e deletar comentários   |
+| RF012  | Gerenciar empréstimos                | Permitir inclusão, consulta, finalização e prolongamento de empréstimos |
+| RF013  | Gerenciar recomendações              | Recomendar livros, gêneros e autores |
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
-|--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
-| ... |	... |	... |
+| Código | Requisito Não Funcional (Restrição)                                                                                                                                                     |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RNF001 | **Responsividade** — O sistema web deverá ser responsivo e apresentar layouts desktop, tablet e celular                                                                                    |
+| RNF002 | **Implementação** — O sistema deverá ser desenvolvido utilizando as linguagens HTML, CSS e JavaScript                                                                                   |
+| RNF003 | **Armazenamento** — O armazenamento de dados deverá ser realizado no próprio navegador do usuário (localStorage)                                                                        |
+| RNF004 | **Design** — A interface deverá ser moderna e atrativa, seguindo as melhores práticas de design                                                                             |
+| RNF005 | **Facilidade de uso** — O fluxo de atividades do sistema deverá ser fácil e intuitivo, atendendo a públicos diversos, incluindo pessoas da terceira idade                        |
+| RNF006 | **Acessibilidade** — O sistema web deverá atender a requisitos mínimos de acessibilidade, tais como tabulação lógica, descrição em áudio de elementos visuais e descrição em texto para elementos auditivos |
+
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
-| ... |	... |	... |
+| Leitor |	Usuário que deseja buscar livros para empréstimo. É responsável por seu próprio perfil e pelas solicitações de empréstimo de livros. O leitor pode interagir com o sistema favoritando livros, adicionando títulos à sua cesta, avaliando obras específicas e deixando comentários. Possui um acesso restrito ao sistema.|
+| Bibliotecário |	Usuário responsável pelo gerenciamento dos livros do averso e dos empréstimos efetivados. Possui acesso geral ao sistema e terá como atribuição adicional a gestão do fluxo informacional referente aos autores cadastrados no site. |
 
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
+
+Como observado no diagrama de casos de uso da Figura 1, os leitores possuem alto grau de autonomia no gerenciamento de seus perfis e na interação com o sistema, realizando suas próprias reservas e criando listas de favoritos e uma cesta de livros selecionados para serem reservados. A figura do bibliotecário será responsável por cadastrar livros e autores, bem como acompanhar as reservas e registrar os empréstimos. O sistema web apresentará um sistema automático de recomendações baseado tanto no perfil do leitor quanto na popularidade de gêneros, títulos e autores entre os usuários do site.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
- 
+<img width="713" height="1290" alt="image" src="https://github.com/user-attachments/assets/69e242b0-a3b4-4716-96cb-4329d6e715e8" />
+
+
 ### 3.4.2 Descrições de Casos de Uso
 
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
+#### Gerenciar livros (CSU01)
 
-#### Gerenciar Professor (CSU01)
+Súmario: O bibliotecário do sistema realiza a gestão (inclusão, remoção, alteração e consulta) dos dados de um livro.
 
-Sumário: A Secretária realiza a gestão (inclusão, remoção, alteração e consulta) dos dados sobre professores.
+Ator Primário: Bibliotecário.
 
-Ator Primário: Secretária.
+Ator Secundário: Não possui.
 
-Ator Secundário: Coordenador.
-
-Pré-condições: A Secretária deve ser validada pelo Sistema.
+Pré-condições: O bibliotecário deve estar previamente cadastrado no sistema.
 
 Fluxo Principal:
 
-1) 	A Secretária requisita manutenção de professores.
-2) 	O Sistema apresenta as operações que podem ser realizadas: inclusão de um novo professor, alteração de um professor, a exclusão de um professor e a consulta de dados de um professor.
-3) 	A Secretária seleciona a operação desejada: Inclusão, Exclusão, Alteração ou Consulta, ou opta por finalizar o caso de uso.
-4) 	Se a Secretária desejar continuar com a gestão de professores, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+1) O sistema apresenta as operações que podem ser realizadas: inclusão de um novo livro, consulta dos dados de um livro, alteração dos dados de um livro e exclusão de um livro.
+2) O bibliotecário seleciona a opção desejada: inclusão, consulta, exclusão ou opta por encerrar o caso de uso.
+3) Se o bibliotecário deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
 
-Fluxo Alternativo (3): Inclusão
+Fluxo Alternativo (2): Inclusão
 
-a)	A Secretária requisita a inclusão de um professor. <br>
-b)	O Sistema apresenta uma janela solicitando o CPF do professor a ser cadastrado. <br>
-c)	A Secretária fornece o dado solicitado. <br>
-d)	O Sistema verifica se o professor já está cadastrado. Se sim, o Sistema reporta o fato e volta ao início; caso contrário, apresenta um formulário em branco para que os detalhes do professor (Código, Nome, Endereço, CEP, Estado, Cidade, Bairro, Telefone, Identidade, Sexo, Fax, CPF, Data do Cadastro e Observação) sejam incluídos. <br>
-e)	A Secretária fornece os detalhes do novo professor. <br>
-f)	O Sistema verifica a validade dos dados. Se os dados forem válidos, inclui o novo professor e a grade listando os professores cadastrados é atualizada; caso contrário, o Sistema reporta o fato, solicita novos dados e repete a verificação. <br>
+a) O bibliotecário requisita a inclusão de um livro no sistema.
+b) O sistema apresenta a página de cadastro de um livro.
+c) O bibliotecário preenche os campos solicitados.
+d) O sistema verifica se há erros no formato e tipo dos dados inseridos. Em caso afirmativo, o sistema reporta o fato e solicita a verificação dos dados. Em caso negativo, o sistema prossegue para o próximo passo.
+e) O sistema inclui o novo livro e atualiza o banco de dados.
 
-Fluxo Alternativo (3): Remoção
+Fluxo Alternativo (2): Consulta
 
-a)	A Secretária seleciona um professor e requisita ao Sistema que o remova. <br>
-b)	Se o professor pode ser removido, o Sistema realiza a remoção; caso contrário, o Sistema reporta o fato. <br>
+a) O bibliotecário solicita a consulta de dados de um livro no sistema.
+b) O sistema apresenta a página de informações do livro.
+c) O bibliotecário consulta os dados do livro.
 
-Fluxo Alternativo (3): Alteração
+Fluxo Alternativo (2): Alteração
 
-a)	A Secretária altera um ou mais dos detalhes do professor e requisita sua atualização. <br>
-b)	O Sistema verifica a validade dos dados e, se eles forem válidos, altera os dados na lista de professores, caso contrário, o erro é reportado. <br>
+a) O bibliotecário requisita a edição dos dados de um livro no sistema.
+b) O sistema apresenta o formulário de edição de dados.
+c) O bibliotecário altera os dados que julgar necessário e requisita sua atualização.
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a)	O bibliotecário solicita a exclusão do livro ao sistema.
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de aceite, exclui o livro selecionado do banco de dados.
+
+#### Gerenciar autores (CSU02)
+
+Súmario: O bibliotecário do sistema realiza a gestão (inclusão, remoção, alteração e consulta) dos dados de um autor.
+
+Ator Primário: bibliotecário.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O bibliotecário deve estar previamente cadastrado no sistema.
+
+Fluxo Principal:
+
+1) O sistema apresenta as operações que podem ser realizadas: inclusão de um novo autor, consulta dos dados de um autor, alteração dos dados de um autor e exclusão de um autor.
+2) O bibliotecário seleciona a opção desejada: inclusão, consulta, exclusão ou opta por encerrar o caso de uso.
+3) Se o bibliotecário deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O bibliotecário requisita a inclusão de um autor no sistema.
+b) O sistema apresenta a página de cadastro de um autor.
+c) O bibliotecário preenche os campos solicitados.
+d) O sistema verifica se o autor já existe no sistema. Em caso afirmativo, o sistema reporta o fato e solicita a verificação dos dados. Em caso negativo, o sistema prossegue para o próximo passo.
+e) O sistema inclui o novo autor e atualiza o banco de dados.
+
+Fluxo Alternativo (2): Consulta
+
+a) O bibliotecário solicita a consulta de dados de um autor no sistema.
+b) O sistema apresenta a página de informações do autor.
+c) O bibliotecário consulta os dados do autor.
+
+Fluxo Alternativo (2): Alteração
+
+a) O bibliotecário requisita a edição dos dados de um autor no sistema.
+b) O sistema apresenta o formulário de edição de dados.
+c) O bibliotecário altera os dados que julgar necessário e requisita sua atualização.
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a)	O bibliotecário solicita a exclusão do autor ao sistema.
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de aceite, exclui o autor selecionado do banco de dados.
+
+#### Gerenciar  leitores (CSU03)
+
+Sumário: O leitor realiza a gestão (inclusão, remoção, alteração e consulta) dos seus próprios dados.
+
+Ator Primário: Leitor.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O leitor deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1)  O sistema apresenta as operações que podem ser realizadas: inclusão de um novo leitor, consulta dos dados de um leitor, alteração dos dados de um leitor e exclusão de um leitor.
+2) 	O leitor seleciona a operação desejada: inclusão, consulta, alteração, exclusão ou opta por encerrar o caso de uso.
+3)  Se o leitor deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O leitor requisita sua inclusão no sistema.
+b) O sistema apresenta a página de cadastro.
+c) O leitor preenche os campos solicitados.
+d) O sistema verifica se o leitor já possui cadastro. Em caso afirmativo, o sistema reporta o fato e solicita a verificação dos dados. Em caso negativo, o sistema prossegue para o próximo passo.
+e) O sistema inclui o novo leitor e atualiza o banco de dados com o novo cadastro.
+
+Fluxo Alternativo (2): Consulta
+
+a) O leitor requisita a consulta de seus dados no sistema.
+b) O sistema apresenta a página de perfil.
+c) O leitor confere os dados solicitados.
+
+Fluxo Alternativo (2): Alteração
+
+a) O leitor requisita a edição de seus dados no sistema.
+b) O sistema apresenta o formulário de edição de dados.
+c) O leitor altera os dados que julgar necessário e requisita sua atualização.
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a)	O leitor solicita a exclusão de sua conta de usuário.
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de aceite, exclui a conta do usuário do banco de dados.
  
-Fluxo Alternativo (3): Consulta
+Pós-condições: um leitor foi cadastrado no sistema, seus dados foram exibidos ou alterados ou sua conta foi excluída do sistema.
 
-a)	A Secretária opta por pesquisar pelo nome ou código e solicita a consulta sobre a lista de professores. <br>
-b)	O Sistema apresenta uma lista professores. <br>
-c)	A Secretária seleciona o professor. <br>
-d)	O Sistema apresenta os detalhes do professor no formulário de professores. <br>
+#### Gerenciar bibliotecários (CSU04)
 
-Pós-condições: Um professor foi inserido ou removido, seus dados foram alterados ou apresentados na tela.
+Sumário: O bibliotecário realiza a gestão (consulta, alteração ou exclusão) dos seus próprios dados.
+
+Ator Primário: Bibliotecário.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O bibliotecário deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) O sistema apresenta as operações que podem ser realizadas: consulta dos dados de um bibliotecário, alteração dos dados de um bibliotecário e exclusão de um bibliotecário.
+2) O bibliotecário seleciona a operação desejada: consulta, alteração, exclusão ou opta por encerrar o caso de uso.
+3) Se o bibliotecário deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Consulta
+
+a) O bibliotecário requisita a consulta de seus dados no sistema. 
+b) O sistema apresenta a página de perfil. 
+c) O bibliotecário confere os dados solicitados.
+
+Fluxo Alternativo (2): Alteração
+
+a) O bibliotecário requisita a edição de seus dados no sistema. 
+b) O sistema apresenta o formulário de edição de dados. 
+c) O bibliotecário altera os dados que julgar necessário e requisita sua atualização. 
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a) O bibliotecário solicita a exclusão de sua conta de usuário. 
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de aceite, exclui a conta do usuário do banco de dados.
+
+Pós-condições: os dados do bibliotecário foram exibidos ou alterados ou sua conta foi excluída do sistema.
+
+#### Gerenciar reservas de livros (CSU05)
+
+Sumário: O leitor realiza a gestão (inclusão, consulta e exclusão) de reservas de livros.
+
+Ator Primário: Leitor.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O leitor deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) O sistema apresenta as operações que podem ser realizadas: inclusão de uma reserva, consulta dos dados de uma reserva, exclusão de uma reserva.
+2) O leitor seleciona a operação desejada: inclusão, consulta ou exclusão de uma reserva, ou opta por encerrar o caso de uso.
+3) Se o leitor deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O leitor requisita a inclusão de uma reserva no sistema. 
+b) O sistema registra a reserva no banco de dados e exibe a posição do leitor na fila de reservas da obra desejada. 
+
+Fluxo Alternativo (2): Consulta
+
+a) O leitor requisita a consulta de suas lista de reservas. 
+b) O sistema apresenta a página com todas as reservas do leitor. 
+c) O leitor confere os dados solicitados.
+
+Fluxo Alternativo (2): Exclusão
+
+a) O leitor solicita a exclusão de uma reserva. 
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de confirmação, exclui o leitor da fila de reservas daquele título específico, atualizando a fila no banco de dados.
+
+Pós-condições: a reserva de um livro foi incluída, consultada ou excluída do sistema.
+
+#### Realizar login do usuário (CSU06)
+
+Sumário: Permitir a entrada de leitores e bibliotecários no sistema, validando suas credenciais de acesso.
+
+Ator Primário: Leitor ou Bibliotecário.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O usuário (leitor ou bibliotecário) deve estar previamente cadastrado no sistema.
+
+Fluxo Principal:
+
+1)O sistema apresenta a seção de login com as opções de entrar no sistema ou redefinir senha.
+2)O usuário seleciona a opção desejada: entrar no sistema ou redefinir sua senha.
+3)Caso o usuário deseje realizar outra operação, retorna ao passo 2. Caso contrário, o caso de uso termina.
+
+
+Fluxo Alternativo (2): entrar no sistema
+a) O usuário escolhe a opção de entrar no sistema 
+b) O sistema solicita a inserção dos dados de entrada nos campos correspondentes
+c) O usuário preenche os campos solicitados
+d) O sistema valida os dados inseridos e, em caso afirmativo, a entrada no sistema é confirmada. Caso contrário, o sistema reporta o erro e solicita a verificação dos dados.
+
+Fluxo Alternativo (2): Esqueci minha senha
+
+a) O usuário aciona a opção “Esqueci minha senha”.
+b) O sistema apresenta o procedimento de recuperação de senha (por intermédio de um código de verificação enviado para o e-mail do usuário).
+c) O usuário segue o procedimento para redefinir sua senha.
+d) O sistema valida os dados inseridos e, em caso afirmativo, a senha é alterada, encerrando o caso de uso. Caso contrário, o sistema reporta o erro e solicita a verificação dos dados.
+
+Pós-condições: O usuário foi autenticado no sistema e obteve acesso às funcionalidades de acordo com seu perfil ou ocorreu a alteração da senha do usuário no banco de dados.
+
+#### Realizar logout do usuário (CSU07)
+
+Sumário: Permitir a saída de leitores e bibliotecários do sistema, encerrando a sessão do usuário de forma segura.
+
+Ator Primário: Leitor ou Bibliotecário.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O usuário (leitor ou bibliotecário) deve estar autenticado no sistema.
+
+Fluxo Principal:
+
+1)O sistema apresenta a opção “Sair” ao usuário autenticado.
+2)O usuário seleciona a opção “Sair”.
+3)O sistema exibe uma janela de confirmação de saída e, em caso de aceite, realiza o logout do usuário.
+
+Pós-condições: A sessão do usuário é encerrada e ele não tem mais acesso às funcionalidades restritas até efetuar um novo login.
+
+#### Buscar livros (CSU08)
+
+Sumário: O leitor realiza a busca por livros no sistema, podendo aplicar filtros como título, gênero, autor e ano de publicação.
+
+Ator Primário: Leitor.
+
+Pré-condições: Não possui.
+
+Fluxo Principal:
+	1)	O sistema apresenta a seção de busca de livros.
+	2)	O leitor seleciona o critério de busca (título, gênero, autor ou ano de publicação) ou realiza uma busca sem selecionar filtros.
+
+ Fluxo alternativo (2): Busca por título
+
+ a)O leitor insere o título do livro desejado no campo de busca.
+ b)O sistema realiza a busca e, caso encontre correspondências, apresenta todos os livros cujos títulos contêm as palavras buscadas. Caso contrário, reporta a inexistência de títulos correspondentes.
+
+ Fluxo alternativo (2): Busca por gênero
+
+ a)O leitor insere o gênero desejado no campo de busca.
+ b)O sistema realiza a busca e, caso encontre correspondências, apresenta os livros correspondentes ao gênero buscado. Caso contrário, reporta a inexistência de títulos com referência ao gênero buscado.
+
+ Fluxo alternativo (2): Busca por autor
+
+ a)O leitor insere o autor desejado no campo de busca.
+ b)O sistema realiza a busca e, caso encontre correspondências, apresenta os livros escritos pelo autor buscado. Caso contrário, reporta a inexistência de títulos escritos pelo autor buscado.
+ 
+Fluxo alternativo (2): Busca por ano de publicação
+
+ a)O leitor insere o ano de publicação desejado no campo de busca.
+ b)O sistema realiza a busca e, caso encontre correspondências, apresenta os livros publicados no ano requisitado. Caso contrário, reporta a inexistência de títulos publicados naquele ano.
+
+ Fluxo alternativo (2): Busca sem filtros
+
+ a)O leitor insere as palavras desejadas no campo de busca
+ b)O sistema realiza a busca e, caso encontre correspondências, apresenta os livros que contenham referência à palavra informada em seu título, nome do autor ou gênero. Caso contrário, reporta a inexistência de livros com alguma referência às palavras buscadas.
+ 
+Pós-condições: O catálogo de livros correspondentes à busca é exibido, permitindo ao leitor consultar informações de cada obra.
+
+#### Gerenciar lista de favoritos (CSU09)
+
+Sumário: O leitor realiza a gestão (inclusão, consulta e exclusão) da lista de favoritos.
+
+Ator Primário: Leitor.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O leitor deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) O sistema apresenta as operações que podem ser realizadas: inclusão de um novo livro à lista, consulta da lista de favoritos, exclusão de um livro da lista.
+2) O leitor seleciona a operação desejada: inclusão, consulta ou exclusão de um favorito, ou opta por encerrar o caso de uso.
+3) Se o leitor deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O leitor requisita a inclusão de um livro à lista. 
+b) O sistema registra o livro na lista de favoitos e o exibe junto aos outros, caso já haja algum. 
+
+Fluxo Alternativo (2): Consulta
+
+a) O leitor requisita a consulta de sua lista de favoritos. 
+b) O sistema apresenta a página com todos os livros inclusos na lista de favoritos do leitor. 
+c) O leitor confere os dados solicitados.
+
+Fluxo Alternativo (2): Exclusão
+
+a) O leitor solicita a exclusão de um livro da lista. 
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de confirmação, exclui o livro selecionado da lista, atualizando a mesma.
+
+Pós-condições: um livro foi incluído, consultado ou excluído da lista de favoritos do leitor.
+
+#### Gerenciar livros selecionados (CSU10)
+
+Sumário: O leitor realiza a gestão (inclusão, consulta e exclusão) da sacola de livros.
+
+Ator Primário: Leitor.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O leitor deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) O sistema apresenta as operações que podem ser realizadas: inclusão de um novo livro à sacola, consultar lista de selecionados, exclusão de um livro da sacola.
+2) O leitor seleciona a operação desejada: inclusão, consulta ou exclusão de um livro da sacola, ou opta por encerrar o caso de uso.
+3) Se o leitor deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O leitor requisita a inclusão de um livro à sacola. 
+b) O sistema registra o livro na sacola de livros selecionados e o exibe junto aos outros, caso já haja algum. 
+
+Fluxo Alternativo (2): Consulta
+
+a) O leitor requisita a consulta de sua sacola de livros selecionados. 
+b) O sistema apresenta a página com todos os títulos inclusos na sacola de livros selecionados do leitor. 
+c) O leitor confere os dados solicitados.
+
+Fluxo Alternativo (2): Exclusão
+
+a) O leitor solicita a exclusão de um livro da sacola. 
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de confirmação, exclui o livro selecionado da sacola, atualizando a mesma.
+
+Pós-condições: um livro foi incluído, consultado ou excluído da sacola do leitor.
+
+#### Gerenciar avaliações (CSU11)
+
+Sumário: O leitor realiza a gestão (inclusão, remoção, alteração e consulta) das suas avaliações.
+
+Ator Primário: Leitor.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O leitor deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1)  O sistema apresenta as operações que podem ser realizadas: inclusão de uma nova avaliação, consulta dos dados de uma avaliação, alteração dos dados de uma avaliação e exclusão de uma avaliação.
+2) 	O leitor seleciona a operação desejada: inclusão, consulta, alteração, exclusão ou opta por encerrar o caso de uso.
+3)  Se o leitor deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O leitor requisita a inclusão de sua avaliação no sistema.
+b) O sistema apresenta a página de cadastro de uma avaliação.
+c) O leitor preenche os campos solicitados.
+d) O sistema verifica se o livro já foi avaliado por este leitor. Em caso afirmativo, o sistema reporta o fato e solicita a verificação dos dados da avaliação. Em caso negativo, o sistema prossegue para o próximo passo.
+e) O sistema inclui uma nova avaliação e atualiza o banco de dados.
+
+Fluxo Alternativo (2): Consulta
+
+a) O leitor requisita a consulta de suas avaliações no sistema.
+b) O sistema apresenta a página de avaliações.
+c) O leitor confere os dados das avaliações.
+
+Fluxo Alternativo (2): Alteração
+
+a) O leitor requisita a edição de suas avaliações no sistema.
+b) O sistema apresenta o formulário de edição de dados.
+c) O leitor altera os dados que julgar necessário e requisita sua atualização.
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a)	O leitor solicita a exclusão de sua avaliação.
+b) O sistema exibe uma janela de confirmação de exclusão e, em caso de aceite, exclui a avaliação do banco de dados.
+ 
+Pós-condições: uma avaliação foi cadastrada no sistema, essa avaliação teve seus dados exibidos ou alterados ou foi excluída do sistema.
+
+#### Gerenciar  empréstimos (CSU12)
+
+Sumário: O bibliotecário realiza a gestão (inclusão, remoção, alteração e consulta) dos empréstimos da biblioteca.
+
+Ator Primário: Bibliotecário.
+
+Ator Secundário: Não possui.
+
+Pré-condições: O bibliotecário deve estar cadastrado e deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1)  O sistema apresenta as operações que podem ser realizadas: inclusão de um novo empréstimo, consulta dos dados de um empréstimo, alteração dos dados de um empréstimo e exclusão de um empréstimo.
+2) 	O bibliotecário seleciona a operação desejada: inclusão, consulta, alteração, exclusão ou opta por encerrar o caso de uso.
+3)  Se o bibliotecário deseja realizar outra operação, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+
+Fluxo Alternativo (2): Inclusão
+
+a) O bibliotecário requisita a inclusão de um empréstimo no sistema.
+b) O sistema apresenta a página de cadastro de empréstimos.
+c) O bibliotecário preenche os campos solicitados.
+d) O sistema verifica se o empréstimo já foi realizado por este bibliotecário. Em caso afirmativo, o sistema reporta o fato e solicita a verificação dos dados do empréstimo. Em caso negativo, o sistema prossegue para o próximo passo.
+e) O sistema inclui um novo empréstimo e atualiza o banco de dados.
+
+Fluxo Alternativo (2): Consulta
+
+a) O bibliotecário requisita a consulta dos empréstimos realizados no sistema.
+b) O sistema apresenta a página de empréstimos.
+c) O bibliotecário confere os dados dos empréstimos.
+
+Fluxo Alternativo (2): Alteração
+
+a) O bibliotecário requisita a edição de um empréstimo no sistema.
+b) O sistema apresenta o formulário de edição de dados.
+c) O bibliotecário altera os dados que julgar necessário e requisita sua atualização.
+d) O sistema verifica a validade dos dados e, em caso afirmativo, realiza as alterações no banco de dados. Caso contrário, o erro é reportado.
+
+Fluxo Alternativo (2): Exclusão
+
+a)	O bibliotecário solicita o cancelamento de um empréstimo.
+b) O sistema exibe uma janela de confirmação de cancelamento e, em caso de aceite, cancela o empréstimo do banco de dados.
+ 
+Pós-condições: um empréstimo foi cadastrado no sistema, esse empréstimo teve seus dados exibidos ou alterados ou foi excluído do sistema.
+
+#### Gerenciar  recomendações (CSU13)
+
+Sumário: O tempo realiza a recomendação de livros, gêneros e autores para os leitores, com base em suas interações registradas.
+
+Ator Primário: Tempo.
+
+Ator Secundário: Leitor.
+
+Pré-condições: O leitor deve estar cadastrado e validado pelo sistema, além de possuir interações registradas como reservas, avaliações e curtidas.
+
+Fluxo Principal:
+
+1)  O sistema apresenta o acervo ao leitor.
+2) 	O sistema verifica se o leitor possui interações (histórico de reservas, avaliações e curtidas). Em caso negativo, o sistema não gera um carrossel de recomendação personalizado. Em caso afirmativo, o sistema prossegue para o próximo passo.
+3)  O sistema identifica livros ou autores semelhantes baseados em suas características.
+4)  O sistema apresenta um carrossel de recomendações personalizadas ao leitor.
+
+Pós-condições: um carrossel de recomendações foi exibido ao leitor.
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+O diagrama de classes do sistema para bibliotecas está representado a seguir. A superclasse Usuário engloba as subclasses Leitor e Bibliotecário. O leitor registra uma lista de até duas reservas e cada reserva pertence a somente um leitor. O relacionamento entre o leitor e a reserva é de composição. Na lógica projetada, cada reserva específica diz respeito a apenas um livro, mas cada livro pode estar contido em diversas reservas devido à possibilidade de haver uma fila de reservas.
+
+Cada leitor pode possuir, em seu histórico, diversos empréstimos associados, mas cada empréstimo específico pertence a apenas um leitor. É importante notar que o histórico de empréstimos de um leitor permanece no sistema mesmo no caso de exclusão da conta desse leitor. Na lógica projetada, cada empréstimo diz respeito a apenas um livro, e cada livro específico pode ter apenas um empréstimo por vez. 
+
+Cada livro deve ter pelo menos um autor, havendo a possibilidade de possuir múltiplos autores. De maneira análoga, cada autor cadastrado deve possuir ao menos um livro no acervo, podendo possuir diversos livros. Cada livro deve ser registrado com pelo menos um gênero associado, podendo possuir até três gêneros. Cada gênero registrado no sistema deve possuir pelo menos um livro associado, não havendo limite superior para essa quantidade. Cada autor presente no sistema deve possuir pelo menos um gênero associado, não havendo limite para essa quantidade. De maneira análoga, cada gênero deve ter pelo menos um autor associado, não havendo, também, limite para essa quantidade.
 
 #### Figura 2: Diagrama de Classes do Sistema.
- 
-![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
+
+<img width="1703" height="839" alt="image" src="https://github.com/user-attachments/assets/c35c717d-74cc-4a2a-a84e-53749df9e545" />
 
 
 ### 3.4.4 Descrições das Classes 
 
 | # | Nome | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+| 1	|	Usuário |	Superclasse que engloba tanto o bibliotecário quanto o leitor |
+| 2	| Bibliotecário |	É referenciado nos empréstimos por ele registrados |
+| 3 |	Leitor |	Registra suas próprias reservas e é referenciado pelos empréstimos a ele associados |
+| 4 |	Empréstimo |	Contém referências do leitor, do bibliotecário, do livro, bem como atributos relacionados à data de coleta e devolução do livro. Possui também atributos booleanos que indicam se houve prolongamento do empréstimo e se o empréstimo está em vigor ou já foi finalizado. |
+| 5	|	Reserva |Faz referência ao leitor que registrou a reserva e ao livro desejado e possui também atributos que indicam a data e hora de registro e a data e hora limites para efetivação do empréstimo. |
+| 6 |	Livro |	 Contém atributos de identificação, como o ISBN, autor, editora e gênero. Possui um número de chamada que indica sua posição física na biblioteca. Contém um contador de acessos virtuais que alimenta o sistema de recomendações.|
+| 7 |	Gênero |	Possui um atributo de nome, uma lista de gêneros relacionados e um contador de acessos virtuais de livros pertencentes ao gênero, que será importante para o sistema de recomendações. |
+| 8 |	Autor |	 Possui atributos de identificação, como nome e uma descrição bibliográfica curta. Possui também um atributo booleano que indica se o autor é brasileiro ou não. Contém uma lista de gêneros associados ao autor e uma lista de suas obras contidas no acervo. |

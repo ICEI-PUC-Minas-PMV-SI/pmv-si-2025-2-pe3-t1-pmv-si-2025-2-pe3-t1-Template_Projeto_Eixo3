@@ -1,4 +1,4 @@
-# Título do Projeto
+# Versora - sistemas web para bibliotecas
 
 `CURSO: Sistemas de Informação`
 
@@ -6,20 +6,22 @@
 
 `SEMESTRE: 3º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Este projeto tem como finalidade desenvolver uma plataforma web para bibliotecas físicas que auxilie no cadastramento e controle do acervo, no registro e edição dos dados dos usuários, bem como na reserva de livros por parte dos próprios leitores, de forma totalmente digital. 
+
+O sistema web desenvolvido possuirá layout moderno e acessível e apresentará alto nível de interatividade para o usuário, como a funcionalidade de recomendação de títulos e autores, a possibilidade de favoritar obras e uma seção de avaliações de títulos.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Caio Nogueira Menezes
+* Danilo César Brito
+* Gustavo Alves de Castro
+* Jessé Delgado da Costa de Souza e Cunha
+* Kauê Cavalcanti Campos
+* Michael Breno de Oliveira Brito
 
 ## Orientador
 
-* Nome completo do professor 
+* Fábio Martins de Oliveira
 
 # Planejamento
 

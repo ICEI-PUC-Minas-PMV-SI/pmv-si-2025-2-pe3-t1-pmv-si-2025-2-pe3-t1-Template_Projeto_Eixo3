@@ -1,0 +1,232 @@
+#body-redefinir-senha [hidden]{
+  display: none !important;
+}
+
+/* -------- Layout das sections -------- */
+#body-redefinir-senha .redefinir-senha_parte-1,
+#body-redefinir-senha .redefinir-senha_parte-2,
+#body-redefinir-senha .redefinir-senha_parte-3,
+#body-redefinir-senha .body-redefinir-senha_parte-3{
+  margin: 24px auto;
+  padding: 16px;
+  gap: 10%;
+}
+
+#body-redefinir-senha .redefinir-senha_titulo{
+  text-align: center;
+  margin: 8px 0 4px;
+  font: 700 clamp(20px, 3.2vw, 28px)/1.2 var(--fonte-principal);
+  color: var(--branco);
+}
+
+#body-redefinir-senha .redefinir-senha_orientação{
+  margin: 0 0 12px;
+  font: 500 clamp(14px, 1.7vw, 24px)/1.5 var(--fonte-principal);
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+/* -------- Inputs comuns (e-mail / senhas) -------- */
+#body-redefinir-senha .redefinir-senha_formulario-1 label,
+#body-redefinir-senha .redefinir-senha_formulario-3 label{
+  display: block;
+  margin: 8px 0 6px;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 20px;
+}
+
+#body-redefinir-senha input[type="email"],
+#body-redefinir-senha input[type="password"]{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--alcacuz / 0.25);
+  border-radius: 10px;
+  background: var(--branco);
+  color: var(--texto);
+  font: 500 16px/1.35 var(--fonte-principal);
+}
+
+#body-redefinir-senha input[type="email"]::placeholder,
+#body-redefinir-senha input[type="password"]::placeholder{
+  color: var(--alcacuz / 0.55);
+}
+
+#body-redefinir-senha input[type="email"]:focus,
+#body-redefinir-senha input[type="password"]:focus{
+  outline: none;
+  border-color: var(--azul-delft);
+  box-shadow: 0 0 0 5px var(--azul-delft / 0.2);
+}
+
+/* -------- Botões -------- */
+#body-redefinir-senha .redefinir-senha_botoes{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+#body-redefinir-senha .redefinir-senha_botoes button{
+  appearance: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font: 700 20px/1 var(--fonte-principal);
+  cursor: pointer;
+  border: 1.5px solid var(--azul-delft);
+  background: var(--azul-delft);
+  color: var(--branco);
+  transition: filter .15s ease, transform .05s ease;
+   border: solid white;
+   margin: 1.5rem 0.5rem 0 0.5rem;
+   width: 30%;
+}
+
+#body-redefinir-senha #enviar-codigo_botao-cancelar,
+#body-redefinir-senha #redefinir-senha_botao-cancelar{
+  background: var(--vermelho-alaranjado);
+  color: var(--branco);
+  border-color: var(--vermelho-alaranjado);
+   border: solid white;
+}
+
+#body-redefinir-senha .redefinir-senha_botoes button:hover{
+  filter: brightness(1.07);
+}
+#body-redefinir-senha .redefinir-senha_botoes button:active{
+  transform: translateY(1px);
+}
+#body-redefinir-senha .redefinir-senha_botoes button:focus-visible{
+  outline: .2rem solid var(--vermelho-alaranjado);
+  outline-offset: 2px;
+}
+
+/* =================================
+   OTP (código de 6 dígitos)
+   ================================= */
+#body-redefinir-senha .codigo-validacao{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin: 18px 0 8px;
+  position: relative;
+}
+
+#body-redefinir-senha .codigo-validacao__input{
+  width: 2.6ch;
+  text-align: center;
+  font: 700 clamp(28px, 6vw, 40px)/1.1 "Inter", var(--fonte-principal);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 6px 0 10px;
+  border-bottom: 2px dashed var(--alcacuz / 0.25);
+  color: var(--texto);
+  caret-color: transparent;
+}
+
+#body-redefinir-senha .codigo-validacao__input::placeholder{
+  color: var(--alcacuz / 0.45);
+}
+
+/* Foco/Preenchido: apenas com a paleta */
+#body-redefinir-senha .codigo-validacao__input:focus-visible{
+  border-bottom-style: solid;
+  border-bottom-color: var(--azul-delft);
+  box-shadow: 0 2px 0 0 var(--azul-delft);
+}
+#body-redefinir-senha .codigo-validacao__input:not(:placeholder-shown){
+  border-bottom-style: solid;
+  border-bottom-color: var(--alcacuz / 0.45);
+}
+
+/* -------- Estados e animação do "shake" */
+@keyframes otp-shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+
+
+#body-redefinir-senha .codigo-validacao.otp--erro .codigo-validacao__input{
+  border-bottom-color: var(--vermelho-alaranjado);
+  border-bottom-style: solid;
+}
+
+#body-redefinir-senha .codigo-validacao.otp--ok .codigo-validacao__input{
+  border-bottom-color: var(--azul-delft);
+  border-bottom-style: solid;
+  box-shadow: 0 2px 0 0 var(--azul-delft);
+}
+
+/* ===== Loading para envio do código por e-mail ===== */
+#body-redefinir-senha .rs-loading{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#body-redefinir-senha .rs-loading__text{
+  font: 600 14px/1 var(--fonte-principal);
+  color: var(--texto-secundario);
+}
+
+#body-redefinir-senha .rs-loading__bar{
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--alcacuz) 15%, transparent);
+  overflow: hidden;
+}
+
+#body-redefinir-senha .rs-loading__bar::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--azul-delft);
+  border-radius: inherit;
+  animation: rs-indeterminate 900ms ease-in-out infinite;
+}
+
+@keyframes rs-indeterminate {
+  0%   { transform: translateX(-60%); }
+  50%  { transform: translateX(25%); }
+  100% { transform: translateX(160%); }
+}
+
+/* Dispara apenas a animação; mantém otp--erro só para o estilo */
+#body-redefinir-senha .codigo-validacao.otp--shake{
+  animation: otp-shake 420ms ease;
+}
+
+.redefinir-senha-secao{
+  background-color: var(--azul-delft);
+   color: var(--branco);
+   border-radius: 1rem;
+   height: 60vh;
+   width: 50vw;
+   display: flex;
+   flex-direction: column;
+   gap: 50%;
+}
+
+.redefinir-senha_formulario-1{
+  display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+.redefinir-senha_botoes{
+  display: block;
+  align-items: center;
+}
+
+.img-troca-senha {
+  display: block;
+  margin: 30px auto 0;
+  max-width: 150px; 
+}

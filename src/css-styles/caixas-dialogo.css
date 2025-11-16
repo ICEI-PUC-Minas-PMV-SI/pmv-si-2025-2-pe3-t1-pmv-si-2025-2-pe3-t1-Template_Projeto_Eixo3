@@ -1,0 +1,154 @@
+dialog.dlg {
+
+  /* Controle aqui o posicionamento das caixas de diálogo */
+  position: fixed;        
+  top: 40%;               
+  left: 50%;
+  transform: translate(-50%, -50%); 
+
+  border: solid 0.2rem var(--alcacuz);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  width: 50vw;
+  box-shadow: 0 24px 60px var(--alcacuz/0.8);
+  text-align: center;                 
+  font-family: var(--fonte-principal);
+  background: var(--branco);
+}
+
+dialog.dlg::backdrop {
+  background: var(--alcacuz/0.8);
+}
+
+/* Título e descrição */
+.dlg__title {
+  margin: 0 0 .5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--alcacuz);
+}
+
+.dlg__desc {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--alcacuz);
+  opacity: .9;
+}
+
+/* Área de ações centralizada */
+.dlg-actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;            /* centraliza botões */
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: .5rem;
+}
+
+/* Botões: estilo geral */
+.dlg-btn {
+  
+  flex: 1 1 0;
+  width: auto;
+
+  height: 2.5rem;
+  padding: 0 1rem;                     
+  border-radius: calc((5/8)*1rem);
+  font-size: 1.25rem;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+
+ 
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* se for apenas o botão "Ok */
+.dlg-actions .dlg-btn:only-child {
+  flex: 0 0 auto;    /* não cresce nem encolhe */
+  width: auto;       /* só o tamanho do texto + padding */
+  min-width: 6rem;   /* largura mínima confortável */
+  justify-self: center;
+}
+
+/* Primário (equivalente ao botão Logar) */
+.dlg-btn--primary {
+  background: var(--azul-delft);
+  color: var(--branco);
+
+}
+
+/* Secundário (mesma família/estilo, versão contornada) */
+.dlg-btn--secondary {
+  background: transparent;
+  color: var(--vermelho-alaranjado);
+  border: 0.2rem solid var(--vermelho-alaranjado);
+
+}
+
+/* Interações */
+.dlg-btn--primary:hover { filter: brightness(1.2); }
+.dlg-btn--secondary:hover { filter: brightness(1.2);}
+.dlg-btn:focus-visible {
+  outline: .2rem solid var(--vermelho-alaranjado);
+  outline-offset: 2px;
+}
+
+
+/* cores da caixa de diálogo específica do botão cancelar cadastro */
+.dlg--confirm .dlg-actions button[value="cancel"] {
+  background: var(--azul-delft); 
+  color: var(--branco);
+  border: 0.2rem solid var(--azul-delft);
+}
+
+.dlg--confirm .dlg-actions button[value="confirm"]:hover {
+
+  filter: brightness(1.2);
+
+}
+
+.dlg--confirm .dlg-actions button[value="confirm"] {
+
+  background: var(--branco);
+  color: var(--vermelho-alaranjado);     
+  border: 0.2rem solid var(--vermelho-alaranjado);
+  
+}
+/* ____________________________________________________________ */
+
+/* Modificando especificamente o hover do botão de cancelar logout */
+
+.dlg-btn--secondary:hover{
+
+  filter:brightness(1.2);
+}
+
+/* Modificando caixas adaptadas para campos CPF e CEP */
+
+#botao-cancelar-cpf-cep{
+
+  background: transparent;
+  color: var(--vermelho-alaranjado);
+  border: 0.2rem solid var(--vermelho-alaranjado);
+}
+
+#botao-cancelar-cpf-cep:hover{
+
+  filter: brightness(1.2);
+}
+.dlg__btn--confirm{
+
+  background: var(--azul-delft);
+  color: var(--branco);
+}
+
+.dlg__btn--confirm:hover{
+
+  filter: brightness(1.2);
+
+}
