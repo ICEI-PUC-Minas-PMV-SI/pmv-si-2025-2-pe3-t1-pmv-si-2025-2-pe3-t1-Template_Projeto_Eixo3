@@ -1,4 +1,5 @@
-# Título do Projeto
+
+<img width="400" height="400" alt="Logo Lar dos Caramellos" src="https://github.com/user-attachments/assets/4463ce72-0a50-4b02-8d2c-2033969e0cb3" />
 
 `CURSO: Sistemas de Informação`
 
@@ -6,20 +7,20 @@
 
 `SEMESTRE: 3º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O **Lar dos Caramellos** é um projeto voltado para a criação de uma aplicação web dedicada à adoção de animais resgatados. A plataforma tem como objetivo conectar pessoas interessadas em adotar.
+Além de disponibilizar informações sobre cada animal, como fotos, histórico e cuidados necessários, a aplicação também busca conscientizar sobre a importância da adoção responsável, contribuindo para reduzir o número de cães em situação de abandono. O projeto pretende unir tecnologia e solidariedade para transformar a vida de animais e futuros tutores.
+
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Hugo Santos
+* Pedro Augusto Alves Oliveira Calazans
+* Raquel de Souza Ribeiro
+* Rayana Eppenstein
 
 ## Orientador
 
-* Nome completo do professor 
+* Fábio Martins de Oliveira 
 
 # Planejamento
 
